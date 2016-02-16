@@ -1,0 +1,53 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#userInfo").click(function(){
+				$.get("main/user", function(data, status) {
+					if (status === "success") {
+						$("#userData").text(JSON.stringify(data, null, '\t'));
+					}
+				});
+			});
+			$("#productInfo").click(function(){
+				$.get("main/product", function(data, status) {
+					if (status === "success") {
+						$("#productData").text(JSON.stringify(data, null, '\t'));
+					}
+				})
+			});
+			$("#priceInfo").click(function(){
+				$.get("main/price", function(data, status) {
+					if (status === "success") {
+						$("#priceData").text(JSON.stringify(data, null, '\t'));
+					}
+				})
+			});
+			$("#productPriceInfo").click(function(){
+				$.get("main/productPrice", function(data, status) {
+					if (status === "success") {
+						$("#productPriceData").text(JSON.stringify(data, null, '\t'));
+					}
+				})
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<a href='main/login' id="login">login</a>
+		<button id="userInfo">User info</button>
+		<pre id="userData"></pre>
+	</div>
+	<div>
+		<h1>Here we are testing our microservices</h1>
+		<button id="productInfo">Get product info</button>
+		<pre id="productData"></pre>
+		<button id="priceInfo">Get price</button>
+		<pre id="priceData"></pre>
+		<button id="productPriceInfo">Get product info with price</button>
+		<pre id="productPriceData"></pre>
+	</div>
+</body>
+</html>
